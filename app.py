@@ -12,8 +12,32 @@ app.debug = False
 CORS(app)
 
 @app.route("/")
-def hello_world():
-    return render_template('home.html')
+def main():
+    return render_template('home.html', a='asdf')
+
+@app.route("/aboutus")
+def aboutus():
+    return render_template('aboutus.html')
+
+@app.route("/privacy")
+def privacy():
+    return render_template('privacy.html')
+
+@app.route("/terms")
+def terms():
+    return render_template('terms.html')
+
+@app.route("/refund")
+def refund():
+    return render_template('refund.html')
+
+@app.route("/pay")
+def payment():
+    return render_template('payments.html')
+
+@app.route("/payment/success")
+def succesfulPayment():
+    return "Payment Successful"
 
 @app.route("/api", methods=['POST'])
 def api():
