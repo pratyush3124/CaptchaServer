@@ -12,7 +12,7 @@ if ENV == 'dev':
     my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1ram@localhost/captcha'
 else:
     my_app.debug = False
-    my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bpubqeyqhekidv:b33f622dd2ada7f376b44b20a9d025db7f264b3590021df8d50b54ef0f263c6b@ec2-52-44-80-40.compute-1.amazonaws.com:5432/d76hkeledml0ld'
+    my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://bpubqeyqhekidv:b33f622dd2ada7f376b44b20a9d025db7f264b3590021df8d50b54ef0f263c6b@ec2-52-44-80-40.compute-1.amazonaws.com:5432/d76hkeledml0ld'
 
 db = SQLAlchemy(my_app)
 
