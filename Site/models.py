@@ -1,7 +1,7 @@
 from Site import db
 
 class User(db.Model):
-    userId = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.String, primary_key=True)
     isBought = db.Column(db.Boolean, nullable=False, default=0)
     paymentId = db.Column(db.String, nullable=False, default=0)
     orderId = db.Column(db.String, nullable=False, default=0)
