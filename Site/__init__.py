@@ -6,7 +6,7 @@ from Site import utility
 ENV = 'prod'
 
 my_app = Flask(__name__)
-
+my_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 if ENV == 'dev':
     my_app.debug = True
     my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1ram@localhost/captcha'
