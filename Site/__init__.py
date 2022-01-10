@@ -16,8 +16,8 @@ else:
 
 db = SQLAlchemy(my_app)
 
-api_key = "rzp_test_CdqGx08LQ19FSF"
-api_secret="ZVmBJCf2gdC6QGwUyszN9Wn0"
+api_key = "rzp_live_bFfbSm8ah3dNk2"
+api_secret="9pxts5LAz3nrPY3oesNeowjP"
 rpclient = razorpay.Client(auth=(api_key, api_secret))
 ut = utility.Utility(client=rpclient)
 

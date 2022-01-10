@@ -9,7 +9,7 @@ from flask_cors import cross_origin
 # from PIL import Image
 import random
 
-rzp_key = "rzp_test_CdqGx08LQ19FSF"
+rzp_key = "rzp_live_bFfbSm8ah3dNk2"
 
 
 @my_app.route("/")
@@ -94,13 +94,19 @@ def checkID(uid):
 
 
 def createID():
-    new_id = random.randint(100000, 999999)
+    new_id = randGen()
     new_user = User(userId=new_id)
     db.session.add(new_user)
     db.session.commit()
     print(f"new user created {new_user}")
     return {'newId': new_id}
 
+def randGen(n=10):
+    alphanum = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+    rands = ""
+    for i in range(20):
+        rands += alphanum[random.randrange(0,len(alphanum))]
+    return rands
 
 def checkBought(uid):
     q = User.query.filter_by(userId=uid).all()
