@@ -1,4 +1,4 @@
-from Site import app
+from Site import my_app
 
 if __name__=='__main__':
-    app.run()
+    my_app.run()

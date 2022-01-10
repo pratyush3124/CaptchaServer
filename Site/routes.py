@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from Site import app, rpclient, ut, db
+from Site import my_app, rpclient, ut, db
 # from Site.solver import solve_captcha
 from Site.models import User
 from flask import render_template, request
@@ -12,32 +12,32 @@ import random
 rzp_key = "rzp_test_CdqGx08LQ19FSF"
 
 
-@app.route("/")
+@my_app.route("/")
 def main():
     return render_template('home.html')
 
 
-@app.route("/aboutus/")
+@my_app.route("/aboutus/")
 def aboutus():
     return render_template('aboutus.html')
 
 
-@app.route("/privacy/")
+@my_app.route("/privacy/")
 def privacy():
     return render_template('privacy.html')
 
 
-@app.route("/terms/")
+@my_app.route("/terms/")
 def terms():
     return render_template('terms.html')
 
 
-@app.route("/refund/")
+@my_app.route("/refund/")
 def refund():
     return render_template('refund.html')
 
 
-@app.route("/pay/")
+@my_app.route("/pay/")
 def payment():
     args = dict(request.args)
     print(args)
@@ -53,7 +53,7 @@ def payment():
     return render_template('payments.html', oid=str(order["id"]), uid=args['uid'], key=str(rzp_key))
 
 
-@app.route("/payment/success/", methods=['POST'])
+@my_app.route("/payment/success/", methods=['POST'])
 def succesfulPayment():
     uid = request.args['uid']
     message = request.form
@@ -74,7 +74,7 @@ def succesfulPayment():
         print("Wrong hash")
 
 
-@app.route("/api/", methods=['POST'])
+@my_app.route("/api/", methods=['POST'])
 @cross_origin()
 def api():
     message = request.get_json(force=True)
@@ -106,7 +106,7 @@ def checkBought(uid):
     q = User.query.filter_by(userId=uid).all()
     return {'ans': q[0].isBought}
 
-# @app.route("/ml/predict/", methods=['POST'])
+# @my_app.route("/ml/predict/", methods=['POST'])
 # def ml():
 #     message = request.get_json(force=True)
 #     encoded = message['image']

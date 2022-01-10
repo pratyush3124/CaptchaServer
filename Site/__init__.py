@@ -5,16 +5,16 @@ from Site import utility
 
 ENV = 'prod'
 
-app = Flask(__name__)
+my_app = Flask(__name__)
 
 if ENV == 'dev':
-    app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1ram@localhost/captcha'
+    my_app.debug = True
+    my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:1ram@localhost/captcha'
 else:
-    app.debug = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bpubqeyqhekidv:b33f622dd2ada7f376b44b20a9d025db7f264b3590021df8d50b54ef0f263c6b@ec2-52-44-80-40.compute-1.amazonaws.com:5432/d76hkeledml0ld'
+    my_app.debug = False
+    my_app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://bpubqeyqhekidv:b33f622dd2ada7f376b44b20a9d025db7f264b3590021df8d50b54ef0f263c6b@ec2-52-44-80-40.compute-1.amazonaws.com:5432/d76hkeledml0ld'
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(my_app)
 
 api_key = "rzp_test_CdqGx08LQ19FSF"
 api_secret="ZVmBJCf2gdC6QGwUyszN9Wn0"
