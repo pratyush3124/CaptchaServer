@@ -69,7 +69,7 @@ def succesfulPayment():
             user.paymentId = params_dict['razorpay_payment_id']
             user.orderId = params_dict['razorpay_order_id']
             db.session.commit()
-        return "<h4> Payment Successful! <br> You can close this window now and refresh Vtop</h4>"
+        return "<h4>Payment Successful! <br> You can click the 'I have paid' button on extension's popup page.<br> Close this window now and refresh Vtop</h4>"
     else:
         print("Wrong hash")
 
@@ -101,10 +101,10 @@ def createID():
     print(f"new user created {new_user}")
     return {'newId': new_id}
 
-def randGen(n=10):
+def randGen(n=20):
     alphanum = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     rands = ""
-    for i in range(20):
+    for i in range(n):
         rands += alphanum[random.randrange(0,len(alphanum))]
     return rands
 
