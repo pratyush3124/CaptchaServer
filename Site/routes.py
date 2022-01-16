@@ -40,7 +40,7 @@ def refund():
 @my_app.route("/pay/")
 def payment():
     args = dict(request.args)
-    print(args)
+    print('Paying', args)
     DATA = {
         "amount": 4500,
         "currency": "INR",
@@ -69,6 +69,7 @@ def succesfulPayment():
             user.paymentId = params_dict['razorpay_payment_id']
             user.orderId = params_dict['razorpay_order_id']
             db.session.commit()
+            print("Successful payment")
         return "<h4>Payment Successful! <br> You can click the 'I have paid' button on extension's popup page.<br> Close this window now and refresh Vtop</h4>"
     else:
         print("Wrong hash")
@@ -92,7 +93,6 @@ def checkID(uid):
     q = User.query.filter_by(userId=uid).all()
     return False if q == [] else True
 
-
 def createID():
     new_id = randGen()
     new_user = User(userId=new_id)
@@ -101,16 +101,17 @@ def createID():
     print(f"new user created {new_user}")
     return {'newId': new_id}
 
+def checkBought(uid):
+    q = User.query.filter_by(userId=uid).all()
+    print({'ans': q[0].isBought})
+    return {'ans': q[0].isBought}
+
 def randGen(n=20):
     alphanum = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
     rands = ""
     for i in range(n):
         rands += alphanum[random.randrange(0,len(alphanum))]
     return rands
-
-def checkBought(uid):
-    q = User.query.filter_by(userId=uid).all()
-    return {'ans': q[0].isBought}
 
 # @my_app.route("/ml/predict/", methods=['POST'])
 # def ml():
