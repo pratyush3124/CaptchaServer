@@ -10,7 +10,7 @@ from flask_cors import cross_origin
 import random
 import os
 
-rzp_key = os.environ['rzp_key']
+rzp_key = os.environ['RZP_KEY']
 
 
 @my_app.route("/")
