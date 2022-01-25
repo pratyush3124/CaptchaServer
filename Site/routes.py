@@ -8,8 +8,9 @@ from flask_cors import cross_origin
 # import io
 # from PIL import Image
 import random
+import os
 
-rzp_key = "rzp_live_bFfbSm8ah3dNk2"
+rzp_key = os.environ['rzp_key']
 
 
 @my_app.route("/")
