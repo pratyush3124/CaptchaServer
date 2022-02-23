@@ -43,7 +43,7 @@ def payment():
     args = dict(request.args)
     print('Paying', args)
     DATA = {
-        "amount": 4500,
+        "amount": 9900,
         "currency": "INR",
         "receipt": "receipt#1",
         "notes": {
